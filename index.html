@@ -14,8 +14,7 @@
                 <ul>
                     <li><a href="#aim" class="nav-link">Aim</a></li>
                     <li><a href="#theory" class="nav-link">Theory</a></li>
-                    <li><a href="#procedure" class="nav-link">Procedure</a></li>
-                    <li><a href="#simulation" class="nav-link">Simulation</a></li>
+                    <li><a href="#simulation" class="nav-link active">Simulation</a></li>
                     <li><a href="#quiz" class="nav-link">Quiz</a></li>
                 </ul>
             </nav>
@@ -30,11 +29,10 @@
             <section id="theory" class="section">
                 <h2>Theory</h2>
                 <div class="theory-content">
-                    <p>A rectifier converts alternating current (AC) to direct current (DC) and is an essential part of power supplies.</p>
+                    <p>A half-wave rectifier converts AC to pulsating DC by allowing only one half of the AC waveform to pass through the diode.</p>
                     <div class="formula">
-                        <p><strong>Key Formulas:</strong></p>
-                        <p>V<sub>dc</sub> = V<sub>m</sub>/π (without filter)</p>
-                        <p>Ripple Factor = √(V<sub>rms</sub>/V<sub>dc</sub>)² - 1</p>
+                        <p><strong>Without Filter:</strong> V<sub>dc</sub> = V<sub>m</sub>/π, Ripple Factor = 1.21</p>
+                        <p><strong>With Filter:</strong> V<sub>dc</sub> ≈ V<sub>m</sub>, Ripple Factor reduces significantly</p>
                     </div>
                 </div>
             </section>
@@ -42,105 +40,86 @@
             <section id="simulation" class="section">
                 <h2>Interactive Simulation</h2>
                 
-                <div class="simulation-interface">
-                    <!-- Component Palette -->
-                    <div class="component-palette">
-                        <h3>Components</h3>
-                        <div class="components-list">
-                            <div class="component-item" draggable="true" data-type="ac-source">
-                                <div class="component-icon">⚡</div>
-                                <span>AC Source</span>
-                            </div>
-                            <div class="component-item" draggable="true" data-type="diode">
-                                <div class="component-icon">➡️</div>
-                                <span>Diode</span>
-                            </div>
-                            <div class="component-item" draggable="true" data-type="resistor">
-                                <div class="component-icon">⏚</div>
-                                <span>Resistor</span>
-                            </div>
-                            <div class="component-item" draggable="true" data-type="capacitor">
-                                <div class="component-icon">⎍</div>
-                                <span>Capacitor</span>
-                            </div>
-                            <div class="component-item" draggable="true" data-type="ground">
-                                <div class="component-icon">⏚</div>
-                                <span>Ground</span>
-                            </div>
-                            <div class="component-item" draggable="true" data-type="wire">
-                                <div class="component-icon">➖</div>
-                                <span>Wire</span>
-                            </div>
-                        </div>
-                        
-                        <div class="circuit-presets">
-                            <h4>Quick Build</h4>
-                            <button id="buildHalfWave" class="btn-primary">Build Half Wave</button>
-                            <button id="buildWithFilter" class="btn-primary">Build With Filter</button>
-                            <button id="clearCircuit" class="btn-secondary">Clear All</button>
+                <div class="simulation-controls">
+                    <div class="control-group">
+                        <label>Circuit Type:</label>
+                        <select id="circuitType">
+                            <option value="without">Half Wave Rectifier (No Filter)</option>
+                            <option value="with">Half Wave Rectifier with Filter</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Input Voltage: <span id="voltageValue">6V RMS</span></label>
+                        <input type="range" id="inputVoltage" min="3" max="12" value="6" step="0.5">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Load Resistance: <span id="resistanceValue">1kΩ</span></label>
+                        <input type="range" id="loadResistance" min="500" max="5000" value="1000" step="100">
+                    </div>
+                    
+                    <div class="control-group" id="capacitorControl">
+                        <label>Filter Capacitance: <span id="capacitanceValue">100μF</span></label>
+                        <input type="range" id="capacitance" min="10" max="1000" value="100" step="10">
+                    </div>
+                    
+                    <button id="startSimulation" class="btn-primary">Start Simulation</button>
+                    <button id="stopSimulation" class="btn-secondary">Stop Simulation</button>
+                </div>
+
+                <div class="simulation-area">
+                    <div class="circuit-display">
+                        <h3>Circuit Diagram</h3>
+                        <div class="circuit-container">
+                            <svg id="circuitSvg" width="600" height="300" viewBox="0 0 600 300">
+                                <!-- Circuit will be drawn here by JavaScript -->
+                            </svg>
                         </div>
                     </div>
-
-                    <!-- Circuit Workspace -->
-                    <div class="circuit-workspace">
-                        <h3>Circuit Workspace</h3>
-                        <div class="workspace-container">
-                            <svg id="circuitCanvas" width="800" height="400"></svg>
-                            <div class="workspace-grid"></div>
-                        </div>
-                        
-                        <div class="circuit-controls">
-                            <button id="simulateBtn" class="btn-primary">Run Simulation</button>
-                            <button id="resetBtn" class="btn-secondary">Reset</button>
-                            <button id="analyzeBtn" class="btn-tertiary">Analyze Circuit</button>
-                        </div>
-                    </div>
-
-                    <!-- Waveform Display -->
+                    
                     <div class="waveform-display">
                         <h3>Live Waveforms</h3>
                         <div class="waveform-container">
-                            <canvas id="inputWaveform" width="600" height="200"></canvas>
-                            <canvas id="outputWaveform" width="600" height="200"></canvas>
-                        </div>
-                        
-                        <div class="measurements-panel">
-                            <h4>Real-time Measurements</h4>
-                            <div class="measurements-grid">
-                                <div class="measurement-item">
-                                    <label>Input Voltage (RMS):</label>
-                                    <span id="inputVoltageValue">0 V</span>
-                                </div>
-                                <div class="measurement-item">
-                                    <label>Output DC Voltage:</label>
-                                    <span id="outputVoltageValue">0 V</span>
-                                </div>
-                                <div class="measurement-item">
-                                    <label>Ripple Voltage:</label>
-                                    <span id="rippleVoltageValue">0 V</span>
-                                </div>
-                                <div class="measurement-item">
-                                    <label>Ripple Factor:</label>
-                                    <span id="rippleFactorValue">0</span>
-                                </div>
-                                <div class="measurement-item">
-                                    <label>Diode Current:</label>
-                                    <span id="diodeCurrentValue">0 mA</span>
-                                </div>
-                                <div class="measurement-item">
-                                    <label>Load Power:</label>
-                                    <span id="loadPowerValue">0 mW</span>
-                                </div>
+                            <div class="waveform">
+                                <canvas id="inputWaveform" width="500" height="150"></canvas>
+                                <div class="waveform-label">Input AC</div>
+                            </div>
+                            <div class="waveform">
+                                <canvas id="outputWaveform" width="500" height="150"></canvas>
+                                <div class="waveform-label">Output DC</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Component Properties Panel -->
-                <div class="properties-panel">
-                    <h3>Component Properties</h3>
-                    <div id="propertiesContent">
-                        <p>Select a component to edit its properties</p>
+                <div class="measurements">
+                    <h3>Real-time Measurements</h3>
+                    <div class="measurements-grid">
+                        <div class="measurement-card">
+                            <div class="measurement-label">Input RMS Voltage</div>
+                            <div class="measurement-value" id="inputRMS">6.00 V</div>
+                        </div>
+                        <div class="measurement-card">
+                            <div class="measurement-label">Input Peak Voltage</div>
+                            <div class="measurement-value" id="inputPeak">8.49 V</div>
+                        </div>
+                        <div class="measurement-card">
+                            <div class="measurement-label">Output DC Voltage</div>
+                            <div class="measurement-value" id="outputDC">2.70 V</div>
+                        </div>
+                        <div class="measurement-card">
+                            <div class="measurement-label">Ripple Voltage</div>
+                            <div class="measurement-value" id="rippleVoltage">3.25 V</div>
+                        </div>
+                        <div class="measurement-card">
+                            <div class="measurement-label">Ripple Factor</div>
+                            <div class="measurement-value" id="rippleFactor">1.21</div>
+                        </div>
+                        <div class="measurement-card">
+                            <div class="measurement-label">Efficiency</div>
+                            <div class="measurement-value" id="efficiency">40.6%</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -148,14 +127,22 @@
             <section id="quiz" class="section">
                 <h2>Quiz</h2>
                 <div class="quiz-container">
-                    <!-- Quiz content remains the same -->
+                    <div class="quiz-question">
+                        <h3>What is the main function of a diode in a rectifier circuit?</h3>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q1" value="a"> Convert DC to AC</label>
+                            <label><input type="radio" name="q1" value="b"> Allow current in one direction only</label>
+                            <label><input type="radio" name="q1" value="c"> Store electrical energy</label>
+                            <label><input type="radio" name="q1" value="d"> Amplify the signal</label>
+                        </div>
+                    </div>
+                    <button id="submitQuiz" class="btn-primary">Check Answer</button>
+                    <div id="quizResult"></div>
                 </div>
             </section>
         </main>
     </div>
 
-    <script src="scripts/circuit-builder.js"></script>
-    <script src="scripts/waveform-simulator.js"></script>
     <script src="scripts/simulation.js"></script>
 </body>
 </html>
