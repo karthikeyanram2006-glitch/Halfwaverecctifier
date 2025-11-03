@@ -8,25 +8,32 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
 }
 
 header {
-    background: #2c3e50;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 header h1 {
     text-align: center;
     margin-bottom: 1rem;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 nav ul {
@@ -34,135 +41,232 @@ nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 
 nav li {
-    margin: 0 1rem;
+    margin: 0;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background 0.3s;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-weight: 500;
 }
 
 nav a:hover {
-    background: #34495e;
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-2px);
 }
 
 .section {
-    padding: 2rem;
-    border-bottom: 1px solid #eee;
+    padding: 2.5rem;
+    border-bottom: 1px solid #e1e8ed;
 }
 
 .section h2 {
     color: #2c3e50;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.75rem;
+    font-size: 1.8rem;
 }
 
 .theory-content {
-    max-width: 800px;
+    max-width: 900px;
+    line-height: 1.8;
 }
 
 .formula {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-left: 4px solid #3498db;
-    margin: 1rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1.5rem;
+    border-left: 5px solid #3498db;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .procedure-steps {
     max-width: 800px;
     margin-left: 2rem;
+    font-size: 1.1rem;
 }
 
 .procedure-steps li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    border-left: 3px solid #27ae60;
 }
 
 /* Simulation Styles */
 .simulation-container {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 350px 1fr;
     gap: 2rem;
     margin-top: 1rem;
 }
 
 .control-panel {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: 15px;
     border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .control-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #e1e8ed;
 }
 
 .control-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
 }
 
 .control-group input[type="range"] {
     width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
 }
 
-.btn-primary, .btn-secondary {
-    padding: 0.75rem 1.5rem;
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-primary, .btn-secondary, .btn-tertiary {
+    padding: 0.85rem 1.75rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     margin-right: 1rem;
     margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-primary {
-    background: #3498db;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
 }
 
 .btn-secondary {
-    background: #95a5a6;
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
     color: white;
 }
 
 .btn-secondary:hover {
-    background: #7f8c8d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(149, 165, 166, 0.3);
+}
+
+.btn-tertiary {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+}
+
+.btn-tertiary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
 }
 
 .visualization {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .circuit-diagram, .waveforms, .measurements {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: 15px;
     border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+#circuitSvg {
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #bdc3c7;
+    padding: 1rem;
+}
+
+.waveform-container {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #bdc3c7;
+    padding: 1rem;
 }
 
 #waveformCanvas {
-    border: 1px solid #ccc;
-    background: white;
+    display: block;
+    border-radius: 8px;
+}
+
+.waveform-labels {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-label, .output-label {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.input-label {
+    background: #3498db;
+    color: white;
+}
+
+.output-label {
+    background: #e74c3c;
+    color: white;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 table, th, td {
@@ -170,56 +274,138 @@ table, th, td {
 }
 
 th, td {
-    padding: 0.75rem;
+    padding: 1rem;
     text-align: left;
 }
 
 th {
-    background: #34495e;
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
     color: white;
+    font-weight: 600;
 }
 
 tr:nth-child(even) {
-    background: #f2f2f2;
+    background: #f8f9fa;
+}
+
+tr:hover {
+    background: #e3f2fd;
 }
 
 /* Quiz Styles */
 .quiz-container {
-    max-width: 600px;
+    max-width: 700px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .options label {
     display: block;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    background: #f8f9fa;
-    border-radius: 4px;
+    margin: 0.75rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .options label:hover {
-    background: #e9ecef;
+    background: #e3f2fd;
+    border-color: #3498db;
+    transform: translateX(5px);
 }
 
 footer {
-    background: #2c3e50;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Animation for active simulation */
+.simulation-active {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+/* Component styles for circuit diagram */
+.component {
+    transition: all 0.3s ease;
+}
+
+.component:hover {
+    filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.7));
+}
+
+.diode-active {
+    fill: #e74c3c !important;
+    filter: drop-shadow(0 0 10px #e74c3c);
+}
+
+.capacitor-charging {
+    animation: capacitorCharge 0.5s ease-in-out;
+}
+
+@keyframes capacitorCharge {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .simulation-container {
         grid-template-columns: 1fr;
+    }
+    
+    .control-panel {
+        order: 2;
+    }
+    
+    .visualization {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+    
+    header {
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
     }
     
     nav ul {
         flex-direction: column;
         align-items: center;
+        gap: 0.5rem;
     }
     
     nav li {
+        margin: 0.25rem 0;
+    }
+    
+    .section {
+        padding: 1.5rem;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-tertiary {
+        display: block;
+        width: 100%;
         margin: 0.5rem 0;
     }
 }
