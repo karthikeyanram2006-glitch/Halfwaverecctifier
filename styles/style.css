@@ -1,411 +1,245 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Add these new styles to your existing CSS */
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    background: white;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 20px;
-}
-
-header {
-    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    color: white;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-header h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 2.2rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-nav li {
-    margin: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    font-weight: 500;
-}
-
-nav a:hover {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.5);
-    transform: translateY(-2px);
-}
-
-.section {
-    padding: 2.5rem;
-    border-bottom: 1px solid #e1e8ed;
-}
-
-.section h2 {
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 0.75rem;
-    font-size: 1.8rem;
-}
-
-.theory-content {
-    max-width: 900px;
-    line-height: 1.8;
-}
-
-.formula {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 1.5rem;
-    border-left: 5px solid #3498db;
-    margin: 1.5rem 0;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.procedure-steps {
-    max-width: 800px;
-    margin-left: 2rem;
-    font-size: 1.1rem;
-}
-
-.procedure-steps li {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    background: #f8f9fa;
-    border-radius: 5px;
-    border-left: 3px solid #27ae60;
-}
-
-/* Simulation Styles */
-.simulation-container {
+.simulation-interface {
     display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 2rem;
-    margin-top: 1rem;
+    grid-template-columns: 250px 1fr 300px;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.control-panel {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.control-group {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: white;
+.component-palette {
+    background: #f8f9fa;
+    padding: 20px;
     border-radius: 10px;
-    border: 1px solid #e1e8ed;
+    border: 2px solid #dee2e6;
 }
 
-.control-group label {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1rem;
-}
-
-.control-group input[type="range"] {
-    width: 100%;
-    margin-bottom: 0.75rem;
-    height: 6px;
-    border-radius: 3px;
-    background: #ddd;
-    outline: none;
-    -webkit-appearance: none;
-}
-
-.control-group input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #3498db;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.btn-primary, .btn-secondary, .btn-tertiary {
-    padding: 0.85rem 1.75rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-right: 1rem;
-    margin-top: 0.5rem;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
-}
-
-.btn-secondary {
-    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
-    color: white;
-}
-
-.btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(149, 165, 166, 0.3);
-}
-
-.btn-tertiary {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-    color: white;
-}
-
-.btn-tertiary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
-}
-
-.visualization {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.circuit-diagram, .waveforms, .measurements {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-#circuitSvg {
-    background: white;
-    border-radius: 10px;
-    border: 2px solid #bdc3c7;
-    padding: 1rem;
-}
-
-.waveform-container {
-    position: relative;
-    background: white;
-    border-radius: 10px;
-    border: 2px solid #bdc3c7;
-    padding: 1rem;
-}
-
-#waveformCanvas {
-    display: block;
-    border-radius: 8px;
-}
-
-.waveform-labels {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.components-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
-.input-label, .output-label {
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.input-label {
-    background: #3498db;
-    color: white;
-}
-
-.output-label {
-    background: #e74c3c;
-    color: white;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
+.component-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
     background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 1rem;
-    text-align: left;
-}
-
-th {
-    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-    color: white;
-    font-weight: 600;
-}
-
-tr:nth-child(even) {
-    background: #f8f9fa;
-}
-
-tr:hover {
-    background: #e3f2fd;
-}
-
-/* Quiz Styles */
-.quiz-container {
-    max-width: 700px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.options label {
-    display: block;
-    margin: 0.75rem 0;
-    padding: 1rem;
-    background: white;
+    border: 2px solid #e9ecef;
     border-radius: 8px;
-    cursor: pointer;
+    cursor: grab;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    user-select: none;
 }
 
-.options label:hover {
-    background: #e3f2fd;
+.component-item:hover {
     border-color: #3498db;
-    transform: translateX(5px);
+    background: #e3f2fd;
+    transform: translateY(-2px);
 }
 
-footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white;
+.component-item:active {
+    cursor: grabbing;
+}
+
+.component-icon {
+    font-size: 20px;
+    width: 30px;
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
 }
 
-/* Animation for active simulation */
-.simulation-active {
-    animation: pulse 2s infinite;
+.circuit-presets {
+    margin-top: 20px;
 }
 
-@keyframes pulse {
+.circuit-presets button {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.circuit-workspace {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.workspace-container {
+    position: relative;
+    background: white;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    min-height: 400px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#circuitCanvas {
+    background: transparent;
+    cursor: crosshair;
+}
+
+.workspace-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(#e0e0e0 1px, transparent 1px),
+        linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.circuit-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.waveform-display {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.waveform-container {
+    background: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+#inputWaveform, #outputWaveform {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 5px 0;
+    background: #1a1a1a;
+}
+
+.measurements-panel {
+    background: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.measurements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.measurement-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+.measurement-item label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.measurement-item span {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.properties-panel {
+    grid-column: 1 / -1;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+    margin-top: 20px;
+}
+
+/* Component styles in circuit */
+.circuit-component {
+    cursor: move;
+    transition: all 0.3s ease;
+}
+
+.circuit-component:hover {
+    filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.5));
+}
+
+.circuit-component.selected {
+    filter: drop-shadow(0 0 12px rgba(231, 76, 60, 0.7));
+}
+
+.wire {
+    stroke: #2c3e50;
+    stroke-width: 3;
+    cursor: pointer;
+}
+
+.wire.selected {
+    stroke: #e74c3c;
+    stroke-width: 4;
+}
+
+.ac-source {
+    fill: #3498db;
+}
+
+.diode {
+    fill: #e74c3c;
+}
+
+.diode.conducting {
+    fill: #27ae60;
+    filter: drop-shadow(0 0 10px #27ae60);
+}
+
+.resistor {
+    fill: #f39c12;
+}
+
+.capacitor {
+    fill: #9b59b6;
+}
+
+.ground {
+    fill: #2c3e50;
+}
+
+/* Animation for simulation */
+.simulating {
+    animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-blue {
     0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    70% { box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
     100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
 }
 
-/* Component styles for circuit diagram */
-.component {
-    transition: all 0.3s ease;
-}
-
-.component:hover {
-    filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.7));
-}
-
-.diode-active {
-    fill: #e74c3c !important;
-    filter: drop-shadow(0 0 10px #e74c3c);
-}
-
-.capacitor-charging {
-    animation: capacitorCharge 0.5s ease-in-out;
-}
-
-@keyframes capacitorCharge {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .simulation-container {
+/* Responsive design */
+@media (max-width: 1200px) {
+    .simulation-interface {
         grid-template-columns: 1fr;
     }
     
-    .control-panel {
+    .component-palette {
         order: 2;
     }
     
-    .visualization {
+    .circuit-workspace {
         order: 1;
     }
-}
-
-@media (max-width: 768px) {
-    .container {
-        margin: 10px;
-    }
     
-    header {
-        padding: 1rem;
-    }
-    
-    header h1 {
-        font-size: 1.8rem;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    nav li {
-        margin: 0.25rem 0;
-    }
-    
-    .section {
-        padding: 1.5rem;
-    }
-    
-    .btn-primary, .btn-secondary, .btn-tertiary {
-        display: block;
-        width: 100%;
-        margin: 0.5rem 0;
+    .waveform-display {
+        order: 3;
     }
 }
