@@ -102,19 +102,26 @@
                         
                         <button id="startSimulation" class="btn-primary">Start Simulation</button>
                         <button id="resetSimulation" class="btn-secondary">Reset</button>
+                        <button id="addRipple" class="btn-tertiary">Show Ripple Effect</button>
                     </div>
 
                     <div class="visualization">
                         <div class="circuit-diagram">
                             <h3>Circuit Diagram</h3>
-                            <div id="circuitSvg">
-                                <!-- Circuit diagram will be rendered here -->
+                            <div id="circuitContainer">
+                                <svg id="circuitSvg" width="400" height="300"></svg>
                             </div>
                         </div>
                         
                         <div class="waveforms">
                             <h3>Input and Output Waveforms</h3>
-                            <canvas id="waveformCanvas" width="600" height="300"></canvas>
+                            <div class="waveform-container">
+                                <canvas id="waveformCanvas" width="600" height="300"></canvas>
+                                <div class="waveform-labels">
+                                    <span class="input-label">Input AC</span>
+                                    <span class="output-label">Output DC</span>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="measurements">
@@ -138,6 +145,10 @@
                                     <tr>
                                         <td>Output DC Voltage</td>
                                         <td id="outputDc">2.70 V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ripple Voltage</td>
+                                        <td id="rippleVoltage">3.25 V</td>
                                     </tr>
                                     <tr>
                                         <td>Ripple Factor</td>
@@ -186,6 +197,7 @@
         </footer>
     </div>
 
+    <script src="scripts/circuit.js"></script>
     <script src="scripts/simulation.js"></script>
 </body>
 </html>
